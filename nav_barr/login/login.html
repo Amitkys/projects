@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="style/style.css"> -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.2/css/all.css">
+    <link href='https://fonts.googleapis.com/css?family=Afacad' rel='stylesheet'>
+    <!-- just add or operator and add font name within double quote -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu|Lora|Raleway|Sevillana|Single Day|Quicksand">
+
+<style>
+
+    *{
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+        font-family: 'Afacad';
+        font-size: 19px;
+      }
+      li{
+        cursor: pointer;
+      }
+      nav{
+        min-width: 850px;
+        background: rgb(100,9,121);
+      background: linear-gradient(90deg, rgba(100,9,121,1) 44%, rgba(2,0,36,1) 100%, rgba(0,212,255,1) 100%);
+      }
+
+#main-page{
+  background: rgb(119,45,56);
+background: linear-gradient(90deg, rgba(119,45,56,1) 0%, rgba(43,39,65,1) 60%);
+
+}
+#login-main-page{
+/*  border-image:  linear-gradient(90deg, rgba(16,43,20,1) 23%, rgba(154,169,31,1) 120%);
+  border-image-slice: 1; */
+  /*
+  --border-width: 2px;
+    --border-radius: 40px;
+    align-items: center;
+    font: inherit;
+    background: linear-gradient(90deg, rgba(119,45,56,1) 0%, rgba(43,39,65,1) 60%);
+    border: 0;
+    padding: 10px 15px;
+    position: relative;
+    border-radius: var(--border-radius);
+    z-index: 1;
+    cursor: pointer;
+  */
+  background: linear-gradient(90deg, rgba(43,39,65,1) 0%, rgba(119,45,56,1) 60%);
+  z-index: 1;
+  border: 0;
+
+}
+
+label{
+  padding: 10px;
+  font-family: 'Quicksand';
+
+}
+#login-button{
+  --border-width: 1px;
+  --border-radius: 40px;
+  align-items: center;
+  font: inherit;
+ /* background: linear-gradient(90deg, white 10%, gray 120%);*/
+  background: linear-gradient(90deg, rgb(255, 255, 255) 44%, rgb(194, 194, 197) 100%, rgb(211, 229, 232) 100%);
+  border: 0;
+  padding: 10px 40px;
+  position: relative;
+  border-radius: var(--border-radius);
+  z-index: 1;
+  cursor: pointer;
+  
+}
+#login-button::before{
+  content: '';
+    display: block;
+    height: calc(100% - calc(var(--border-width) * 2));
+    width: calc(100% - calc(var(--border-width) * 2));
+    
+    background: black;
+    position: absolute;
+    /* border width is 1px, you can change as per requrirement */
+    top: var(--border-width);
+    left: var(--border-width);
+    border-radius: calc(var(--border-radius) - var(--border-width));
+    z-index: -1;
+    cursor: pointer;
+}
+
+</style>
+</head> 
+
+<body class="bg-black">  
+
+    <nav class=" flex  items-center justify-end px-12 " >
+        <a class="mr-auto" href="#"><i class="fa-brands fa-square-twitter fa-3x "></i></a>
+        <div >
+          <ul class="flex items-center gap-5 justify-end text-white">
+            
+            <li class="hover:text-green-700 rounded-tl-lg  mx-3 my-2">Java</li>
+            <li class="hover:text-green-700 rounded-tl-lg  mx-3 my-2" >Python</li>
+            <li class="hover:text-green-700 rounded-tl-lg  mx-3 my-2" >C++</li>
+            <li class="hover:text-green-700 rounded-tl-lg  mx-3 my-2" >Contact</li>
+            <li class="hover:text-green-700 rounded-tl-lg  mx-3 my-2" ><a href="#">Log In</a></li>
+    
+          </ul>
+        </div>
+        <a class="ml-10 bg-yellow-500 px-3 py-2 rounded-tl-lg" href=""> <button>Sign Up</button> </a>
+      </nav>
+  
+  <div id="main-page" class="h-[calc(100vh-59px)] w-screen flex bg-red-600  justify-center ">
+    <div id="login-main-page" class="h-[75%] w-[50%] m-auto  rounded-lg items-center text-center border-2">
+      <h2 class=" text-[50px] font-semibold text-center text-white">Log <span class="text-[50px] text-black">in</span></h2>
+      <form action="" class="pt-8 " >
+        <label  for="Uname" class="text-[17px] font-bold">Enter Username:</label><br>
+        <input type="text" class="rounded-2xl text-center outline-offset-0 outline-green-400 focus:outline-none focus:ring focus:border-blue-500 mb-3" placeholder="Less than 8" maxlength="8" required><br>
+        <label for="password" title="password" class="text-[17px] font-bold">Enter Password:</label><br>
+        <input type="password" title="password" class="rounded-2xl text-center outline-offset-0 outline-green-400 focus:outline-none focus:ring focus:border-blue-500" maxlength="8" required><br>
+        <a href="#" class="text-[10px] underline pl-14 text-sky-400">Forget Password?</a>
+      </form>
+      <button id="login-button" class="bg-black text-white px-[0] py-[0] mt-5 outline-none">Log In</button>
+    </div>
+  </div>
+</body>
+
+</html>

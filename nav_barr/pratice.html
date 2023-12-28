@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            
+        }
+button{
+    --border-width: 2px;
+    --border-radius: 40px;
+    align-items: center;
+    font: inherit;
+    background: linear-gradient(90deg, rgba(119,45,56,1) 0%, rgba(43,39,65,1) 60%);
+    border: 0;
+    padding: 10px 15px;
+    position: relative;
+    border-radius: var(--border-radius);
+    z-index: 1;
+    cursor: pointer;
+  }
+  button::before{
+    content: '';
+    display: block;
+    height: calc(100% - calc(var(--border-width) * 2));
+    width: calc(100% - calc(var(--border-width) * 2));
+    
+    background: white;
+    position: absolute;
+    /* border width is 1px, you can change as per requrirement */
+    top: var(--border-width);
+    left: var(--border-width);
+    border-radius: calc(var(--border-radius) - var(--border-width));
+    z-index: -1;
+    cursor: pointer;
+  }
+  div{
+    height: 200px;
+    width: 200px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+    </style>
+</head>
+<body>
+    <div>
+    <button> Click me </button>
+</div>
+</body>
+</html>

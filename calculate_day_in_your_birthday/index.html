@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+    <style>
+        body{
+            text-align: center;
+            margin-top: 200px;
+            font-size: 25px;
+        }
+        input{
+
+            font-size: 20px;
+        }
+        @media (max-width: 480px){
+            input{
+                padding: 10px;
+                font-size: 23px;
+                border-radius: 10px;
+                
+            }
+            #btn{
+                margin-top: 10px;
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+<body class=" bg-gray-500">
+    <form action="">
+        Enter <b>Date</b> of your birth: <input type="text" name="" id="day" placeholder="day should be in digit"><br>
+        Enter <b>Month</b> of your birth: <input type="text" name="" id="month" placeholder="month should be in digit"><br>
+        <input type="button" onclick="calculate()" value="Calculate Day" style="cursor: pointer;" id="btn">
+    </form>
+    
+    <span><strong id="result"></strong> Days have left in your birthday</span>
+
+    <script>
+        function calculate(){
+            let today = new Date();
+            let day = document.getElementById("day").value;
+            let month = document.getElementById("month").value;
+            let birthDate = new Date(today.getFullYear(), month-1, day);
+            if(today.getMonth() > (month-1) || today.getMonth() === (month-1) && today.getDate() > day){
+                birthDate = new Date(today.getFullYear()+1, month-1, day);
+            }
+            let millisecondInday = 1000 * 60 * 60 * 24;
+    
+            let remainDay = Math.ceil((birthDate.getTime() - today.getTime()) / (millisecondInday));
+            document.getElementById("result").innerHTML = remainDay;
+    }
+    </script>
+</body>
+</html>

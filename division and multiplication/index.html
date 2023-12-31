@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+    <style>
+        body{
+            text-align: center;
+            margin-top: 200px;
+            font-size: 25px;
+        }
+        input{
+
+            font-size: 20px;
+        }
+        @media (max-width: 480px){
+            input{
+                font-size: 10px;
+                
+            }
+            #btn{
+                margin-top: 10px;
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+<body class=" bg-gray-500">
+    <form action="">
+        Enter first number: <input type="text" name="" id="firstNumber"><br>
+        Enter second number: <input type="text" name="" id="secondNumber"><br>
+        <input type="button" onclick="multiplyBy()" value="Multiply" style="cursor: pointer;" id="btn">
+        <input type="button" onclick="divisionBy()" value="division" style="cursor: pointer;" id="btn">
+    </form>
+    <span>Result is : </span>
+    <span id="result"></span>
+
+    <script>
+        function multiplyBy(){
+            num1 = document.getElementById("firstNumber").value;
+            num2 = document.getElementById("secondNumber").value;
+
+            document.getElementById("result").innerHTML = num1 * num2;
+        }
+        function divisionBy(){
+            num1 = document.getElementById("firstNumber").value;
+            num2 = document.getElementById("secondNumber").value;
+            document.getElementById("result").innerHTML = num1 / num2;
+        }
+    </script>
+</body>
+</html>

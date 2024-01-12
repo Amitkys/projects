@@ -92,6 +92,7 @@
     <script>
         let button = document.querySelectorAll("#button");
         let body = document.querySelector("body");
+        let h3 = document.querySelector("h3");
         let singleButton = document.querySelector("button");
         singleButton.addEventListener("click", function(){
             body.style.backgroundColor = "white";
@@ -114,6 +115,9 @@
                 }
                 else if(e.target.className === "black"){
                     body.style.backgroundColor = e.target.className;
+                    h3.innerHTML = "Moye Moye";
+                    h3.style.color = "white";
+                    
                 }
                 else if(e.target.className === "purple"){
                     body.style.backgroundColor = e.target.className;

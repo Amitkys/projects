@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu|Lora|Space Grotesk">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        html, body {
+            height: 100%;
+            width: 100%;
+        }
+        .red, .green, .yellow, .orange, .black, .purple {
+            height: 100px;
+            width: 100px;
+            margin-bottom: 5px;
+            border: 1px solid black;
+        }
+        .red {
+            background-color: red;
+        }
+        .green {
+            background-color: green;
+        }
+        .yellow {
+            background-color: yellow;
+        }
+        .orange {
+            background-color: orange;
+        }
+        .black {
+            background-color: black;
+        }
+        .purple {
+            background-color: purple;
+        }
+        #parent {
+            
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap; /* Allow items to wrap into multiple lines */
+            justify-content: space-around; /* Adjust as needed */
+        }
+        .column {
+            display: flex;
+            flex-direction: column;
+        }
+        h3{
+            margin-top: 30px;
+            align-items: center;
+            text-align: center;
+            font-family: 'Space Grotesk';
+            font-size: 28px;
+        }
+        button{
+            margin-top: 22px;
+            
+            padding: 10px 25px;
+            font-size: 20px;
+            font-family: 'Lora';
+            font-weight: bold;
+            margin-left: 33%;
+        }
+         @media (min-width: 992px){
+            button{
+                margin-left: 45%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="parent">
+        <div class="column">
+            <div id="button" class="red"></div>
+            <div id="button" class="green"></div>
+            <div id="button" class="yellow"></div>
+        </div>
+        <div class="column">
+            <div id="button" class="orange"></div>
+            <div id="button" class="black"></div>
+            <div id="button" class="purple"></div>
+        </div>
+    </div>
+    <h3>Select Color to <br> change Background Color</h3>
+    <button>Default</button>
+
+    <script>
+        let button = document.querySelectorAll("#button");
+        let body = document.querySelector("body");
+        let singleButton = document.querySelector("button");
+        singleButton.addEventListener("click", function(){
+            body.style.backgroundColor = "white";
+        })
+        button.forEach(function(button){
+            
+            button.addEventListener("click", function(e){
+                
+                if(e.target.className === "red"){
+                    body.style.backgroundColor = e.target.className;
+                }
+                else if(e.target.className === "green"){
+                    body.style.backgroundColor = e.target.className;
+                }
+                else if(e.target.className === "yellow"){
+                    body.style.backgroundColor = e.target.className;
+                }
+                else if(e.target.className === "orange"){
+                    body.style.backgroundColor = e.target.className;
+                }
+                else if(e.target.className === "black"){
+                    body.style.backgroundColor = e.target.className;
+                }
+                else if(e.target.className === "purple"){
+                    body.style.backgroundColor = e.target.className;
+                }
+            })
+        })
+    </script>
+</body>
+</html>

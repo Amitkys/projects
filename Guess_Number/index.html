@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess Number</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: monospace;
+        }
+        html, body{
+            height: 100%;
+            width: 100%;
+        }
+        body{
+            background-color: #1C3144;
+            color: #fff;
+            text-align: center;
+        }
+        #container{
+            height: 100%;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        h3{
+            margin-bottom: 10px;
+            font-size: 22px;
+        }
+        #h4{
+            font-size: 18px;
+            margin-bottom: 100px;
+        }
+        input{
+            margin-top: 10px;
+        }
+        input{
+            width: 75px;
+            margin: 17px 0px;
+            font-size: 25px;
+            font-weight: bold;
+            text-align: center;
+            padding: 6px 0px;
+            border-radius: 10px;
+            border-color: transparent;
+            
+        }
+        label{
+            
+            font-size: 28px;
+        }
+        
+        button{
+            --border-width: 1px;
+            --border-radius: 40px;
+            align-items: center;
+            font: inherit;
+           /* background: linear-gradient(90deg, white 10%, gray 120%);*/
+           /*Liner gradient of border*/
+            background: linear-gradient(130deg, rgb(139, 45, 45) 23%, rgb(254, 255, 253) 90%, rgb(130, 132, 132) 100%);
+            border: 0;
+            padding: 10px 40px;
+            position: relative;
+            border-radius: var(--border-radius);
+            z-index: 1;
+            color: #fff;
+            height: 40px;
+            width: 150px;
+            font-size: 20px;
+            
+            font-weight: bold;
+            cursor: pointer;
+            
+          }
+          button::before{
+            content: '';
+              display: block;
+              height: calc(100% - calc(var(--border-width) * 2));
+              width: calc(100% - calc(var(--border-width) * 2));
+              
+              background: black;
+              
+              position: absolute;
+              /* border width is 1px, you can change as per requrirement */
+              top: var(--border-width);
+              left: var(--border-width);
+              border-radius: calc(var(--border-radius) - var(--border-width));
+              z-index: -1;
+              cursor: pointer;
+            
+
+          }
+          button:hover{
+            --border-width: 2.2px;
+            --border-radius: 40px;
+            background: linear-gradient(45deg, rgb(23, 32, 203) -40%, rgb(182, 33, 182) 60%, rgb(177, 33, 33) 100%);
+            border: 0;
+            padding: 10px 40px;
+            position: relative;
+            border-radius: var(--border-radius);
+            z-index: 1;
+           
+            cursor: pointer;
+            
+            
+          }
+          button:hover::before{
+            content: '';
+            display: block;
+            height: calc(100% - calc(var(--border-width) * 2));
+            width: calc(100% - calc(var(--border-width) * 2));
+            
+            background: black;
+            position: absolute;
+            /* border width is 1px, you can change as per requrirement */
+            top: var(--border-width);
+            left: var(--border-width);
+            border-radius: calc(var(--border-radius) - var(--border-width));
+            
+            z-index: -1;
+            cursor: pointer;
+          }
+          @media only screen and (min-width: 992px){
+            button{
+               font-size: 16px;
+            }
+          }
+          button{
+            margin-bottom: 80px;
+          }
+          #remain{
+            margin-bottom: 30px;
+          }
+          #lowOrHigh{
+            margin-bottom: 30px;
+            font-size: 26px;
+          }
+          /* for emoji*/
+          @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-30px);
+            }
+            60% {
+                transform: translateY(-15px);
+            }
+        }
+    
+        .emoji {
+            display: inline-block;
+            animation: bounce 1s infinite;
+        }
+        p{
+            margin-top: 30px;
+            padding: 3px 6px;
+            
+            width: 200px;
+            cursor: pointer;
+            border-radius: 14px;
+            margin-left: 23px;
+            color: yellow
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h3>Guess Number Between 1 to 5</h3>
+        <h4 id="h4">You have only 3 Attemps</h4>
+
+        <form action="">
+            <label for="guessNumber ">Enter Number:</label> <br>
+            <input id="guessNumber" type="number" title="guessNumber"> <br>
+            <button type="submit">Submit</button>
+
+           
+        </form>
+
+        <div id="result-section">
+            <h4 id="lowOrHigh"></h4>
+            <h3 id="remain">Remaining guess: <span id="remain-guess">3</span></h3>
+            <h3 id="previous-guess">Previous Guessed: <span id="guess-slot"></span></h3>
+            <p></p>
+        </div>
+    </div>
+
+    <script>
+        
+        // i multipled with 8 because I have to generate number till 5
+        // and added 1 because, it should not give 0;
+        // here 20 is max, 10 is min
+        // console.log( parseInt((Math.random()*(20 - 10 + 1)) + 10));
+        let body = document.querySelector('body');
+        let submit_btn = document.querySelector('button');
+        let remain_guess = document.querySelector("#remain-guess");
+        let guess_slot = document.querySelector("#guess-slot");
+        let again = document.querySelector('p');
+        
+        let result_section = document.querySelector("#result-section");
+        let lowOrHigh = document.querySelector("#lowOrHigh");
+        
+        let slot = [];
+
+        let attemp = 3;
+
+        let guessNumberFied = document.querySelector("#guessNumber");
+        guessNumberFied.addEventListener("click", function(event){
+            event.preventDefault();
+            body.style.backgroundColor = "#1C3144";
+        })
+        
+        submit_btn.addEventListener('click', function(event){
+            event.preventDefault();
+            
+            let number = document.querySelector("#guessNumber").value;
+            let random_number = parseInt(Math.random() * 5 +1);
+            
+            
+            if(isValidNumber(number)){
+                if (parseInt(number) === random_number) {
+                    body.style.backgroundColor = "green";
+                    lowOrHigh.innerHTML = "Congratulation";
+                    // Refresh the page
+                   // window.location.reload();
+                   slot.push(number);
+                   submit_btn.setAttribute("disabled", true);
+                    submit_btn.style.cursor = "not-allowed";
+                    lowOrHigh.innerHTML = "Congratulations! <span class='emoji'>&#128515;  &#x1F60D;</span>";
+                    again.style.backgroundColor = "black";
+                    again.innerHTML = "Play Again?";
+                   
+                    
+                }
+                else if(parseInt(number) > random_number){
+                    lowOrHigh.innerHTML = "Given number: too high!";
+                    body.style.backgroundColor = "red";
+                    attemp--;
+                    remain_guess.innerHTML = attemp;
+                    slot.push(number);
+                    
+                }
+                else if(parseInt(number) < random_number){
+                    lowOrHigh.innerHTML = "Given number: too low!"
+                    body.style.backgroundColor = "red";
+                    attemp--;
+                    remain_guess.innerHTML = attemp;
+                    slot.push(number);
+                    
+
+                }
+
+                 // Clear the input field
+                 document.querySelector("#guessNumber").value = "";
+                 // adding element from array
+                 guess_slot.innerHTML = slot.join(", ");
+                 
+                 if(attemp === 0){
+                     lowOrHigh.style.backgroundColor = "black";
+                    lowOrHigh.innerHTML = "<span class='emoji'>Chutiye ho tum :(</span>";
+                    again.style.backgroundColor = "black";
+                    again.innerHTML = "Play Again?";
+                    submit_btn.setAttribute("disabled", true);
+                    submit_btn.style.cursor = "not-allowed";
+                    guessNumberField.setAttribute("disabled", true);
+                    
+                    
+                 }
+                 
+                 
+            }
+            else{
+                alert("Number is Invalid");
+            }
+            
+        })
+
+        function isValidNumber(number){
+            if(number > 0 && number <= 5 )
+            return true;
+            else{
+                return false;
+            }
+        }
+
+        again.addEventListener('click', function(even){
+            even.preventDefault();
+            window.location.reload();
+        })
+       
+
+       
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>BMI | Calculator</title>
+    <!-- just add or operator and add font name within given double quote -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu|Lora|Space Grotesk |Nunito Sans|Macondo|BioRhyme">
+
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            
+        }
+        html, body{
+            height: 100%;
+            width: 100%;
+
+        }
+        h1{
+            text-align: center;
+            font-family: 'Nunito Sans';
+        }
+        #container{
+            height: 100%;
+            width: 100%;
+            margin-top: 15px;
+            
+        }
+        form{
+            margin-top: 15px;
+            text-align: center;
+        }
+        label{
+            font-size: 22px;
+            font-family: 'Lora';
+        }
+        input{
+            width: 100px;
+            border-radius: 20px;
+            border-color: transparent;
+            height: 31px;
+            margin-left: 9px;
+            margin-bottom: 18px;
+            padding-left: 5px;
+            font-size: 18px;
+        }
+        button{
+            text-align: center;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            padding: 8px 25px;
+            font-size: 25px;
+            border-radius: 20px;
+            border-color: transparent;
+            font-family: 'Macondo';
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+        #result{
+            width: 300px;
+            margin-top: 15px;
+            text-align: center;
+            margin-left: 10%;
+            font-size: 28px;
+            color: orange;
+            background-color: black;
+            font-family: 'BioRhyme';
+        }
+        ol li {
+            list-style: decimal;
+            list-style-position: inside;
+            margin-left: 25px;
+            word-spacing: 2px;
+        }
+        
+        ol, h3{
+            margin-top: 11px;
+            text-align: left;
+        }
+        h3{
+            margin-top: 40px;
+            margin-left: 5px;
+        }
+        span{
+            background-color: black;
+            color: yellow;
+            border-radius: 5px;
+        }
+        #notice{
+            font-size: 25px;
+            font-weight: bold;
+            margin: 35px 0px;
+            font-family: 'BioRhyme';
+            background-color: black;
+            color: yellow;
+            width: 450px;
+        }
+    </style>
+
+</head>
+<body style="background-color: gray;">
+    <div id="container">
+        <h1>BMI Calculator</h1>
+        <form action="">
+            <label for="height">Height in CM:</label> 
+            <input type="text" id="height" title="height"> <br>
+            <label title="weight" >Weight in KG:</label>
+            <input type="text" id="weight" title="weight"> <br>
+            <button type="submit">Calculate</button> 
+            <div id="result"></div>
+            <h3>BMI Weight Guide:</h3>
+            <ol>
+                <li>Under Weight: Less than <span>18.6</span></li>
+                <li>Normal Weight: <span>18.6</span> to <span>24.9</span></li>
+                <li>Over Weight: Greater than <span>24.9</span></li>
+                
+            </ol>
+            
+           <div id="notice"></div>
+
+            
+            
+           
+        </form>
+        
+    </div>
+
+    <script>
+        // take all form
+        let form = document.querySelector("form");
+        // take submin event
+        // this use case may cause for a empty value
+    //    let height = parseInt(document.querySelector("#height").value);
+
+
+        form.addEventListener("submit", function(e){
+            // stoping prevent because sending it on server
+            e.preventDefault();
+            let height = parseInt(document.querySelector("#height").value);
+            let weight = (document.querySelector("#weight").value);
+            let result = document.querySelector("#result");
+            let notic = document.querySelector("#notice");
+
+
+            if(height === '' || height < 0 || isNaN(height)){
+                result.innerHTML = "It is not valid input";
+                notic.innerHTML = "";
+                return;
+            }
+            if(weight === '' || weight < 0 || isNaN(weight)){
+                
+                result.innerHTML = "It is not valid input";
+                notic.innerHTML = "";
+                return;
+            } 
+            
+            let bmi = (weight / ((height*height)/10000)).toFixed(2);
+            result.innerHTML = `<span>${bmi}</span>`;
+
+            if(bmi < 18.6){
+                notic.innerHTML = "You are UnderWeight";
+            }
+            else if(bmi > 18.6 && bmi < 24.9){
+                notic.innerHTML = "Your weight is Normal";
+            }
+            else{
+                notic.innerHTML = "You are OverWeight";
+            }
+
+
+        })
+
+    </script>
+    
+</body>
+</html>

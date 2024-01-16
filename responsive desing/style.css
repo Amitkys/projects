@@ -1,0 +1,19 @@
+@media only screen and (max-width: 500px) {
+
+    body{
+        background-color: red;
+    }
+ }
+  /*applicable for minimum width: 500 and maximum 768: for iPad */
+  @media only screen and (min-width: 500px) and (max-width: 768px) { 
+      body{
+          background-color: yellow;
+        }
+    }
+    
+    /* applicable for all device whose width is greater than 769: cover laptop desktop all large screen */
+ @media only screen and (min-width:769px){
+    body{
+        background-color: green;
+    }
+ }

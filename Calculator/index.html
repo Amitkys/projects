@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculator</title>
+    <title>Document</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"> -->
     <!-- just add or operator and add font name within given double quote -->
@@ -13,6 +13,10 @@
         html, body{
             height: 100%;
             width: 100%;
+        }
+        body{
+            
+            margin: auto 0;
         }
        /*applicable for minimum width: 500 cover all phone */
         #one, #two, #three, #four, #five, #six, #seven, #eight, #nine, #zero{
@@ -36,15 +40,18 @@
             font-family: 'Nunito Sans';
             
         }
+        #input{
+            font-family: 'calibri';
+        }
         
         
     </style>
 </head>
-<body class="bg-black lg:bg-red-600 md:bg-green-600 text-center ">
+<body class="bg-black lg:bg-black md:bg-green-600 text-center lg:ml-[500px] lg:max-w-[400px]">
 
     
 
-    </div>
+    </div id="calculator">
     <div id="prev" class="h-[40px] w-[100%] mt-[120px]"><h3 class="text-[24px] font-bold pt-[3px] text-left pl-[10px] text-red-500" id="previous-input"></h3></div>
     <div id="inputField" class="h-[85px] w-[100%] border-white  pt-[16px]"><h1 class="text-[40px] text-right pr-[15px] font-bold text-white" id="input"></h1></div>
     <!-- grid -->

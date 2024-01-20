@@ -25,6 +25,16 @@
        #timer{
         font-family: 'calibri';
        }
+
+       @media only screen and (max-width: 500px) {
+
+        #timer{
+            margin-bottom: -100px;
+        }
+        #second{
+            margin-top: -100px;
+        }
+     }
     </style>
 </head>
 
@@ -45,7 +55,7 @@
                 <option value="60">1 hour</option>
                 <!-- Add more options as needed -->
             </select>
-            <div id="timer" class="text-[220px] lg:text-[300px] tracking-widest lg:tracking-[56px] font-semibold">00:00</div>
+            <div id="timer" class="text-[100px] lg:text-[300px] tracking-widest lg:tracking-[56px] font-semibold">00:00</div>
         </div>
     </div>
     <div id="second" class="lg:mt-[-80px] mx-5">

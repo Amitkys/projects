@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POMO</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        html,
+        body {
+            height: 96%;
+            width: 100%;
+        }
+
+        #parent {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+       #timer{
+        font-family: 'calibri';
+       }
+    </style>
+</head>
+
+<body class="bg-black text-gray-500 text-center">
+    <div id="parent">
+        <div>
+            <label for="duration" class="text-[25px] font-thin">PomoDoro Duration:</label>
+            <select id="duration" class="bg-yellow-500 text-black">
+                <option value="1">1 minutes</option>
+                <option value="5">5 minutes</option>
+                <option value="10">10 minutes</option>
+                <option value="15">15 minutes</option>
+                <option value="20">20 minutes</option>
+                <option value="25">25 minutes</option>
+                <option value="30">30 minutes</option>
+                <option value="40">40 minutes</option>
+                <option value="50">50 minutes</option>
+                <option value="60">1 hour</option>
+                <!-- Add more options as needed -->
+            </select>
+            <div id="timer" class="text-[220px] lg:text-[300px] tracking-widest lg:tracking-[56px] font-semibold">00:00</div>
+        </div>
+    </div>
+    <div id="second" class="lg:mt-[-80px] mx-5">
+        <button id="startBtn"
+            class="py-[10px] px-[16px] bg-white text-black hover:bg-gray-500 rounded-lg mr-3 font-bold">Start</button>
+        <button id="resetBtn"
+            class="py-[10px] px-[16px] bg-white text-black hover:bg-gray-500 rounded-lg  mr-3 font-bold">Reset</button>
+        <button id="musicControl" class="py-[10px] px-[16px] bg-white text-black hover:bg-gray-500 rounded-lg mr-3 font-bold"
+            style="display: none;">Play/Pause</button>
+        <button class="py-[10px] px-[16px] bg-white text-black hover:bg-gray-500 rounded-lg mr-3 font-bold" id="nextBtn"
+            style="display: none;">Next</button>
+        <button class="py-[10px] px-[16px] bg-white text-black hover:bg-gray-500 rounded-lg mr-3 font-bold" id="prevBtn"
+            style="display: none;">Previous</button>
+    </div>
+    <script src="index.js"></script>
+</body>
+
+</html>
